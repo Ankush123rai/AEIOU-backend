@@ -66,7 +66,6 @@ export async function register(req, res, next) {
 export async function verifyEmail(req, res, next) {
   try {
     const { email, otp } = req.body;
-    console.log("sdfsdfsdf",otp,email)
     if (!email || !otp) {
       return res.status(400).json({ error: 'Email and OTP are required' });
     }
