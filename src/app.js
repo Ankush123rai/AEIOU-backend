@@ -21,10 +21,9 @@ const app = express();
 
 app.set('trust proxy', 1);
 
-// ✅ Allow specific origins for local + production
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://your-frontend-url.onrender.com" // <-- Update when deploying frontend
+  "https://aeiou-umber.vercel.app" 
 ];
 
 app.use(cors({
@@ -40,7 +39,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// ✅ Fix Helmet blocking CORS
 app.use(helmet({
   crossOriginResourcePolicy: false,
   contentSecurityPolicy: {
@@ -53,10 +51,8 @@ app.use(helmet({
   }
 }));
 
-// ✅ Preflight for all routes
 app.options("*", cors());
 
-// ✅ Body parsers
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ extended: true }));
 
